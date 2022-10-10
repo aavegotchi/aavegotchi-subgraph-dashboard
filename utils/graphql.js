@@ -1,29 +1,30 @@
-import Meta from "../meta/subgraphs.json";
+import Meta from "../meta/subgraphs";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { FETCH_SUBGRAPH_STATUSES } from "./queries";
+
+export function fetchStatusOf(indexNode, subgraphHashes = []) {}
 
 export function getSubgraphClients() {
     const clients = [];
-    const nodes = Object.keys(Meta.nodes);
-    nodes.forEach((n) => {
+    Meta.nodes.forEach((n) => {
         // init index Node ApolloClient
         const indexNode = new ApolloClient({
-            uri: Meta.nodes[n].indexNode,
+            uri: n.indexNode,
             cache: new InMemoryCache(),
         });
 
+        indexNode
+            .query({
+                query: FETCH_SUBGRAPH_STATUSES,
+                variables: {
+                    subgraphs: Meta.subgraphs.map((e) => e.hash),
+                },
+            })
+            .then(console.log);
+
         // init Subgraph ApolloClients
         const subgraphNodes = [];
-        const domains = Object.keys(Meta.nodes[n].subgraphs);
-        domains.forEach((d) => {
-            console.log(d);
-            Meta.nodes[n].subgraphs[d].forEach((s) => {
-                const subgraphEndpoint = `${Meta.nodes[n].apiEndpoint}/${d}/${s}`;
-                subgraphNodes[`${d}/${s}`] = new ApolloClient({
-                    uri: subgraphEndpoint,
-                    cache: new InMemoryCache(),
-                });
-            });
-        });
+        Meta.subgraphs.forEach((s) => {});
 
         // Add to global clients
         clients[n] = { indexNode: indexNode, subgraphs: subgraphNodes };

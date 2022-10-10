@@ -1,15 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { OverviewTable } from "../components/overviewTable";
 import { SubgraphTable } from "../components/subgraphTable";
 import styles from "../styles/Home.module.css";
 import { getSubgraphClients } from "../utils/graphql";
 
 export default function Home() {
-    const clients = getSubgraphClients();
-
-    console.log(clients);
-
     return (
         <div className={styles.container}>
             <Head>
@@ -30,10 +27,7 @@ export default function Home() {
                     This page shows which subgraphs Aavegotchi provide, where
                     they are deployed and its current state.
                 </p>
-
-                <div>
-                    <SubgraphTable title={"aavegotchi/core-matic"} />
-                </div>
+                <OverviewTable />
             </main>
 
             <footer className={styles.footer}>
