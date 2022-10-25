@@ -51,7 +51,9 @@ async function fetchAll() {
     });
 
     return data.indexingStatuses.map((s) => ({
-      subgraphName: subgraphs.filter((e) => s.subgraph == e.current || s.subgraph == e.pending)[0].name,
+      subgraphName: subgraphs.filter(
+        (e) => s.subgraph == e.current || s.subgraph == e.pending
+      )[0].name,
       subgraphHash: s.subgraph,
       synced: s.synced,
       health: s.health,
@@ -75,29 +77,41 @@ async function fetchAll() {
   );
 
   let formattedSubgraphs = subgraphs.map((s) => {
-    let nodes = Meta.nodes.map((n) => {
-      // fetch status subgraph and node
-      let node = subgraphStatesOfNodes.filter((ns) => ns.node == n.name)[0];
-      let filteredSubgraphs = node.subgraphs.filter(
-        (ns) => s.hash == ns.subgraphHash
-      );
+    return {
+      name: s.name,
+      current: {
+        hash: s.current,
+        nodes: subgraphStatesOfNodes
+          .map((e) => {
+            let results = e.subgraphs.filter(
+              (ns) => ns.subgraphHash == s.current
+            );
 
-      if (filteredSubgraphs.length == 0) {
-        return {
-          ...n,
-          indexNode: n.indexNode.link.options.uri,
-          status: null,
-        };
-      }
+            if (results.length === 0) {
+              return null;
+            }
 
-      return {
-        ...n,
-        indexNode: n.indexNode.link.options.uri,
-        status: filteredSubgraphs[0],
-      };
-    });
+            return { name: e.node, ...results[0] };
+          })
+          .filter((f) => f !== null),
+      },
+      pending: {
+        hash: s.pending,
+        nodes: subgraphStatesOfNodes
+          .map((e) => {
+            let results = e.subgraphs.filter(
+              (ns) => ns.subgraphHash == s.pending
+            );
 
-    return { ...s, nodes };
+            if (results.length === 0) {
+              return null;
+            }
+
+            return { name: e.node, ...results[0] };
+          })
+          .filter((f) => f !== null),
+      },
+    };
   });
 
   return formattedSubgraphs;
