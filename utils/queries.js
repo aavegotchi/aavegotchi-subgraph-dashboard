@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const FETCH_SUBGRAPH_STATUSES = gql`
+export const FETCH_SUBGRAPH_STATUSES = gql`
     query fetchSubgraphStatuses($subgraphs: [String!]) {
         indexingStatuses(subgraphs: $subgraphs) {
             subgraph
@@ -26,4 +26,13 @@ const FETCH_SUBGRAPH_STATUSES = gql`
     }
 `;
 
-module.exports = { FETCH_SUBGRAPH_STATUSES };
+export const FETCH_CURRENT_SUBGRAPH = gql`
+    query fetchCurrentSubgraph($subgraphName: String!) {
+        indexingStatusForCurrentVersion(subgraphName: $subgraphName) {
+            subgraph
+        }
+        indexingStatusForPendingVersion(subgraphName: $subgraphName) {
+            subgraph
+        }
+    }
+`;
