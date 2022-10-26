@@ -1,4 +1,5 @@
 const { ApolloClient, InMemoryCache, HttpLink } = require("@apollo/client");
+import { InvalidationPolicyCache } from "apollo-invalidation-policies";
 import fetch from "cross-fetch";
 import {
   PROJECT_AAVEGOTCHI,
@@ -16,17 +17,11 @@ export const Meta = {
           uri: "https://api.thegraph.com/index-node/graphql",
           fetch,
         }),
-        cache: new InMemoryCache({ resultCaching: false }),
-        defaultOptions: {
-          watchQuery: {
-            fetchPolicy: "cache-first",
-            errorPolicy: "ignore",
+        cache: new InvalidationPolicyCache({
+          invalidationPolicies: {
+            timeToLive: 10000,
           },
-          query: {
-            fetchPolicy: "cache-first",
-            errorPolicy: "all",
-          },
-        },
+        }),
       }),
       apiEndpoint: "https://api.thegraph.com",
       default: true,
@@ -38,17 +33,11 @@ export const Meta = {
           uri: "http://157.90.182.138:8030/graphql",
           fetch,
         }),
-        cache: new InMemoryCache(),
-        defaultOptions: {
-          watchQuery: {
-            fetchPolicy: "cache-first",
-            errorPolicy: "ignore",
+        cache: new InvalidationPolicyCache({
+          invalidationPolicies: {
+            timeToLive: 10000,
           },
-          query: {
-            fetchPolicy: "cache-first",
-            errorPolicy: "all",
-          },
-        },
+        }),
       }),
       apiEndpoint: "http://157.90.182.138:8000",
       default: false,

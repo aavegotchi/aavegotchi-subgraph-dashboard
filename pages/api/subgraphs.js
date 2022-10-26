@@ -119,12 +119,6 @@ async function fetchAll() {
   return formattedSubgraphs;
 }
 
-setInterval(() => {
-  Meta.nodes.forEach((n) => {
-    n.indexNode.resetStore();
-  });
-}, 10000);
-
 export default async (req, res) => {
   const result = await fetchAll();
 
