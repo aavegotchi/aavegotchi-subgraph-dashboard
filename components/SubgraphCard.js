@@ -5,6 +5,53 @@ import { SubgraphNode } from "./SubgraphNode";
 export function SubgraphCard({ subgraph }) {
   console.log(subgraph);
   return (
+    <div className="wrapperantialiased text-gray-900 ">
+      <div>
+        <img
+          src="https://source.unsplash.com/random/350x350"
+          alt=" random imgee"
+          className="w-full p-10 object-cover object-center rounded-lg shadow-md"
+        />
+
+        <div className="relative px-4 -mt-16  ">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="flex items-baseline">
+              <span className="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
+                Current
+              </span>
+              <div className="ml-2 text-gray-600 uppercase text-xs font-semibold tracking-wider">
+                Pending
+              </div>
+            </div>
+
+            <h4 className="mt-1 text-xl font-semibold uppercase leading-tight truncate">
+              {subgraph.name.split("/")[1]}
+            </h4>
+
+            <div className="mt-1">
+              {subgraph.entities}
+              <span className="text-gray-600 text-sm"> /entities</span>
+            </div>
+            {subgraph.current.nodes.map((n, i) => (
+              <div className="mt-4" key={i}>
+                <a
+                  href={`${n.apiEndpoint}/subgraphs/id/${subgraph.current.hash}`}
+                  target="_blank"
+                  className="text-teal-600 text-md font-semibold"
+                >
+                  {n.name}
+                </a>
+                <span className="text-sm pl-5 text-gray-600">
+                  {n.lagsBehind} block(s) behind
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+  return (
     <div className="grid grid-cols-1">
       <div>
         <h3 className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">

@@ -44,7 +44,7 @@ export function OverviewTable() {
             Subgraphs & Nodes
           </h2>
         </div>
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 m-20">
           {subgraphStatuses.map((e, i) => (
             <SubgraphCard subgraph={e} key={i} />
           ))}
