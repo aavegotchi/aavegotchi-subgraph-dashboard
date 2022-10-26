@@ -16,14 +16,14 @@ export const Meta = {
           uri: "https://api.thegraph.com/index-node/graphql",
           fetch,
         }),
-        cache: new InMemoryCache(),
+        cache: new InMemoryCache({ resultCaching: false }),
         defaultOptions: {
           watchQuery: {
-            fetchPolicy: "no-cache",
+            fetchPolicy: "cache-first",
             errorPolicy: "ignore",
           },
           query: {
-            fetchPolicy: "no-cache",
+            fetchPolicy: "cache-first",
             errorPolicy: "all",
           },
         },
@@ -41,11 +41,11 @@ export const Meta = {
         cache: new InMemoryCache(),
         defaultOptions: {
           watchQuery: {
-            fetchPolicy: "no-cache",
+            fetchPolicy: "cache-first",
             errorPolicy: "ignore",
           },
           query: {
-            fetchPolicy: "no-cache",
+            fetchPolicy: "cache-first",
             errorPolicy: "all",
           },
         },

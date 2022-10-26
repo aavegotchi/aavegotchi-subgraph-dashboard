@@ -23,7 +23,7 @@ export function OverviewTable() {
         setUpdating(true);
         updateSubgraphStatus();
       }
-    }, 5000);
+    }, 10000);
   }, [subgraphStatuses]);
 
   if (!subgraphStatuses) {

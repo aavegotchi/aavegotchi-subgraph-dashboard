@@ -20,13 +20,21 @@ export function getSyncStatus(synced) {
 }
 
 export function SubgraphNode({ nodeData }) {
+  console.log(nodeData);
   return (
     <div>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4">
-          <Button className="text-black bg-white pt-0 mt-0" variant="text">
-            {nodeData.name}
-          </Button>
+          <a
+            href={
+              nodeData.apiEndpoint + "/subgraphs/name/" + nodeData.subgraphName
+            }
+            target="_blank"
+          >
+            <Button className="text-black bg-white pt-0 mt-0" variant="text">
+              {nodeData.name}
+            </Button>
+          </a>
         </div>
         <div className="col-span-2">
           <Button className="text-black bg-white pt-0" variant="text">

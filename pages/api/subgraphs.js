@@ -24,14 +24,17 @@ async function fetchAll() {
 
   // fetch latest subgraph hashes
   const subgraphs = await Promise.all(
-    Meta.subgraphs.map((e) =>
-      fetchCurrentHash(defaultNode.indexNode, e.name).then((r) => ({
+    Meta.subgraphs.map((e, i) => {
+      console.log(`Fetch Subgraph... ${i}`);
+      return fetchCurrentHash(defaultNode.indexNode, e.name).then((r) => ({
         name: e.name,
         current: r.current,
         pending: r.pending,
-      }))
-    )
+      }));
+    })
   );
+
+  console.log(`Fetched ${subgraphs.length} subgraphs`);
 
   const hashes = subgraphs
     .map((a) => [a.current, a.pending])
@@ -115,6 +118,12 @@ async function fetchAll() {
 
   return formattedSubgraphs;
 }
+
+setInterval(() => {
+  Meta.nodes.forEach((n) => {
+    n.indexNode.resetStore();
+  });
+}, 10000);
 
 export default async (req, res) => {
   const result = await fetchAll();
