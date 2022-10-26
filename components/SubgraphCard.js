@@ -15,7 +15,10 @@ export function SubgraphCard({ subgraph }) {
         {subgraph.current.hash && (
           <>
             <div>
-              <a href={`https://ipfs.io/ipfs/${subgraph.current.hash}`}>
+              <a
+                href={`https://ipfs.io/ipfs/${subgraph.current.hash}`}
+                target="_blank"
+              >
                 <h4>Current ({formatHash(subgraph.current.hash)})</h4>
               </a>
             </div>
@@ -36,7 +39,10 @@ export function SubgraphCard({ subgraph }) {
 
         {subgraph.pending.hash && (
           <>
-            <a href={`https://ipfs.io/ipfs/${subgraph.pending.hash}`}>
+            <a
+              href={`https://ipfs.io/ipfs/${subgraph.pending.hash}`}
+              target="_blank"
+            >
               <h4>Pending ({formatHash(subgraph.pending.hash)})</h4>
             </a>
             <div className="grid grid-cols-12 gap-4">

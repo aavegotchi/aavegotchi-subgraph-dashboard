@@ -26,7 +26,7 @@ export function SubgraphNode({ nodeData }) {
         <div className="col-span-4">
           <a
             href={
-              nodeData.apiEndpoint + "/subgraphs/name/" + nodeData.subgraphName
+              nodeData.apiEndpoint + "/subgraphs/id/" + nodeData.subgraphHash
             }
             target="_blank"
           >
