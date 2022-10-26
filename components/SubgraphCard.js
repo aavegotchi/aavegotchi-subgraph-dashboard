@@ -3,6 +3,7 @@ import { formatHash } from "../utils/format";
 import { SubgraphNode } from "./SubgraphNode";
 
 export function SubgraphCard({ subgraph }) {
+  
   return (
     <div className="grid grid-cols-1">
       <div>

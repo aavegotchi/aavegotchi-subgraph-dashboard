@@ -16,7 +16,6 @@ export function OverviewTable() {
   });
 
   async function updateSubgraphStatus() {
-    console.log("updaste");
     await fetch("http://localhost:3000/api/subgraphs")
       .then((e) => e.json())
       .then((e) => {

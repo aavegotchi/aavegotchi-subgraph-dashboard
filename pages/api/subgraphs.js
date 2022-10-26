@@ -25,7 +25,6 @@ async function fetchAll() {
   // fetch latest subgraph hashes
   const subgraphs = await Promise.all(
     Meta.subgraphs.map((e, i) => {
-      console.log(`Fetch Subgraph... ${i}`);
       return fetchCurrentHash(defaultNode.indexNode, e.name).then((r) => ({
         name: e.name,
         current: r.current,
@@ -33,8 +32,6 @@ async function fetchAll() {
       }));
     })
   );
-
-  console.log(`Fetched ${subgraphs.length} subgraphs`);
 
   const hashes = subgraphs
     .map((a) => [a.current, a.pending])
