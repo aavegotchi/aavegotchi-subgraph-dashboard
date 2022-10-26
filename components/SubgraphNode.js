@@ -20,7 +20,6 @@ export function getSyncStatus(synced) {
 }
 
 export function SubgraphNode({ nodeData }) {
-  console.log(nodeData);
   return (
     <div>
       <div className="grid grid-cols-12 gap-4">

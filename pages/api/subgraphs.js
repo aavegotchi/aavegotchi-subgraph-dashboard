@@ -13,7 +13,6 @@ async function fetchCurrentHash(node, subgraphName) {
     },
   });
 
-  console.log(data.indexingStatusForPendingVersion);
   return {
     current: data.indexingStatusForCurrentVersion?.subgraph,
     pending: data.indexingStatusForPendingVersion?.subgraph,

@@ -3,10 +3,6 @@ import { formatHash } from "../utils/format";
 import { SubgraphNode } from "./SubgraphNode";
 
 export function SubgraphCard({ subgraph }) {
-  useEffect(() => {
-    console.log(subgraph);
-  });
-
   return (
     <div className="grid grid-cols-1">
       <div>
@@ -27,8 +23,8 @@ export function SubgraphCard({ subgraph }) {
             </div>
             <div>
               {subgraph.current.nodes.map((n, i) => (
-                <div>
-                  <SubgraphNode nodeData={n} key={i} />
+                <div key={i}>
+                  <SubgraphNode nodeData={n} />
                 </div>
               ))}
             </div>
@@ -47,8 +43,8 @@ export function SubgraphCard({ subgraph }) {
             </div>
             <div>
               {subgraph.pending.nodes.map((n, i) => (
-                <div>
-                  <SubgraphNode nodeData={n} key={i} />
+                <div key={i}>
+                  <SubgraphNode nodeData={n} />
                 </div>
               ))}
             </div>

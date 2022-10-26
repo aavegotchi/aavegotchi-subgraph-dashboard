@@ -6,29 +6,23 @@ import { FETCH_SUBGRAPH_STATUSES } from "../utils/queries";
 import { SubgraphCard } from "./SubgraphCard";
 
 export function OverviewTable() {
-  const showStatus = (s) =>
-    !s ? (
-      <div>Not deployed on node</div>
-    ) : (
-      <div>
-        {s.health}, {s.lagsBehind} Blocks behind
-      </div>
-    );
-
+  const [updating, setUpdating] = useState(false);
   const [subgraphStatuses, setSubgraphStatuses] = useState(null);
 
   async function updateSubgraphStatus() {
     if (!subgraphStatuses) {
       const data = await (await fetch("/api/subgraphs")).json();
-      console.log(data);
       setSubgraphStatuses(data);
+      setUpdating(false);
     }
   }
 
   useEffect(() => {
     setInterval(() => {
-      console.log("refresh");
-      updateSubgraphStatus();
+      if (!updating) {
+        setUpdating(true);
+        updateSubgraphStatus();
+      }
     }, 5000);
   }, [subgraphStatuses]);
 
