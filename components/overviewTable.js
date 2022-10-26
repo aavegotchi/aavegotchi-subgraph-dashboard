@@ -1,32 +1,31 @@
-// @ts-nocheck
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 import React, { useEffect, useState } from "react";
-import Meta from "../meta/subgraphs";
-import { FETCH_SUBGRAPH_STATUSES } from "../utils/queries";
 import { SubgraphCard } from "./SubgraphCard";
 
 export function OverviewTable() {
   const [updating, setUpdating] = useState(false);
-  const [subgraphStatuses, setSubgraphStatuses] = useState(null);
-
-  async function updateSubgraphStatus() {
-    if (!subgraphStatuses) {
-      const data = await (await fetch("/api/subgraphs")).json();
-      setSubgraphStatuses(data);
-      setUpdating(false);
-    }
-  }
+  const [subgraphStatuses, setSubgraphStatuses] = useState([]);
 
   useEffect(() => {
-    setInterval(() => {
-      if (!updating) {
-        setUpdating(true);
-        updateSubgraphStatus();
-      }
-    }, 10000);
-  }, [subgraphStatuses]);
+    let interval = setInterval(async () => {
+      if (updating) return;
+      setUpdating(true);
+      updateSubgraphStatus();
+    }, 5000);
+    //destroy interval on unmount
+    return () => clearInterval(interval);
+  });
 
-  if (!subgraphStatuses) {
+  async function updateSubgraphStatus() {
+    console.log("updaste");
+    await fetch("http://localhost:3000/api/subgraphs")
+      .then((e) => e.json())
+      .then((e) => {
+        setSubgraphStatuses(e);
+        setUpdating(false);
+      });
+  }
+
+  if (!subgraphStatuses || subgraphStatuses.length == 0) {
     return <div>Loading...</div>;
   }
 
