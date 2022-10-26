@@ -41,56 +41,10 @@ export function OverviewTable() {
             Subgraphs & Nodes
           </h2>
         </div>
-        <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+        <div className="grid grid-cols-2">
           {subgraphStatuses.map((e, i) => (
             <SubgraphCard subgraph={e} key={i} />
           ))}
-          {/* <SubgraphCard /> */}
-
-          {/* <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                        <table class="min-w-full leading-normal">
-                            <thead>
-                                <tr>
-                                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Subgraph Name
-                                    </th>
-                                    <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                        Subgraph Hash
-                                    </th>
-                                    {subgraphStatuses[0].nodes.map((n) => (
-                                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                            {n.name}
-                                        </th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {subgraphStatuses.map((s) => {
-                                    return (
-                                        <tr>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                <p class="text-gray-900 whitespace-no-wrap text-center">
-                                                    {s.name}
-                                                </p>
-                                            </td>
-                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                <p class="text-gray-900 whitespace-no-wrap text-center">
-                                                    {s.hash}
-                                                </p>
-                                            </td>
-                                            {s.nodes.map((n) => (
-                                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p class="text-gray-900 whitespace-no-wrap text-center">
-                                                        {showStatus(n.status)}
-                                                    </p>
-                                                </td>
-                                            ))}
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div> */}
         </div>
       </div>
     </div>
