@@ -16,7 +16,15 @@ export function OverviewTable() {
   });
 
   async function updateSubgraphStatus() {
-    await fetch("http://localhost:3000/api/subgraphs")
+    const myHeaders = new Headers();
+    myHeaders.append("pragma", "no-cache");
+    myHeaders.append("cache-control", "no-cache");
+
+    const myInit = {
+      method: "GET",
+      headers: myHeaders,
+    };
+    await fetch("http://localhost:3000/api/subgraphs", myInit)
       .then((e) => e.json())
       .then((e) => {
         setSubgraphStatuses(e);
