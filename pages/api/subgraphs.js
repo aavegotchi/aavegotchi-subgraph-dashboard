@@ -29,6 +29,7 @@ async function fetchAll() {
         name: e.name,
         current: r.current,
         pending: r.pending,
+        projects: e.projects,
       }));
     })
   );
@@ -63,6 +64,7 @@ async function fetchAll() {
       lagsBehind:
         s.chains[0].chainHeadBlock.number - s.chains[0].latestBlock.number,
       entityCount: s.entityCount,
+      projects: s.projects,
     }));
   };
 
@@ -79,6 +81,7 @@ async function fetchAll() {
   let formattedSubgraphs = subgraphs.map((s) => {
     return {
       name: s.name,
+      projects: s.projects,
       current: {
         hash: s.current,
         nodes: subgraphStatesOfNodes
