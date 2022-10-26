@@ -3,11 +3,11 @@ import React from "react";
 
 export function getStatus(lagsBehind) {
   if (lagsBehind < 6) {
-    return "🟢";
+    return "🟢 (lag: " + lagsBehind + " block(s))";
   } else if (lagsBehind < 50) {
-    return "🟡";
+    return "🟡 (lag: " + lagsBehind + " block(s))";
   } else {
-    return "🔴";
+    return "🔴 (lag: " + lagsBehind + " block(s))";
   }
 }
 
@@ -23,26 +23,21 @@ export function SubgraphNode({ nodeData }) {
   console.log(nodeData);
   return (
     <div>
-      <div className="grid grid-cols-4 gap-4">
-        <div>
+      <div className="grid grid-cols-12 gap-4">
+        <div className="col-span-4">
           <Button className="text-black bg-white pt-0 mt-0" variant="text">
             {nodeData.name}
           </Button>
         </div>
-        <div>
+        <div className="col-span-2">
           <Button className="text-black bg-white pt-0" variant="text">
             {getSyncStatus(nodeData.synced)}
           </Button>
         </div>
-        <div>
-          <Tooltip
-            className="text-black text-right mt-0 pt-0"
-            content={nodeData.lagsBehind + " blocks behind"}
-          >
-            <Button className="text-black bg-white pt-0 mt-0" variant="text">
-              {getStatus(nodeData.lagsBehind)}
-            </Button>
-          </Tooltip>
+        <div className="col-span-6">
+          <Button className="text-black bg-white pt-0 mt-0" variant="text">
+            {getStatus(nodeData.lagsBehind)}
+          </Button>
         </div>
       </div>
     </div>

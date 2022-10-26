@@ -20,10 +20,10 @@ export function SubgraphCard({ subgraph }) {
             <div>
               <h6>Current ({formatHash(subgraph.current.hash)})</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <div>Node name</div>
-              <div>Synced</div>
-              <div>Status</div>
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-4">Node name</div>
+              <div className="col-span-2">Synced</div>
+              <div className="col-span-6">Status</div>
             </div>
             <div>
               {subgraph.current.nodes.map((n, i) => (
@@ -40,10 +40,10 @@ export function SubgraphCard({ subgraph }) {
             <div>
               <h6>Pending ({formatHash(subgraph.pending.hash)})</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <div>Node name</div>
-              <div>Synced</div>
-              <div>Status</div>
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-4">Node name</div>
+              <div className="col-span-2">Synced</div>
+              <div className="col-span-6">Status</div>
             </div>
             <div>
               {subgraph.pending.nodes.map((n, i) => (

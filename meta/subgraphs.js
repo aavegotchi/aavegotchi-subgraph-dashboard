@@ -17,6 +17,16 @@ export const Meta = {
           fetch,
         }),
         cache: new InMemoryCache(),
+        defaultOptions: {
+          watchQuery: {
+            fetchPolicy: "no-cache",
+            errorPolicy: "ignore",
+          },
+          query: {
+            fetchPolicy: "no-cache",
+            errorPolicy: "all",
+          },
+        },
       }),
       apiEndpoint: "https://api.thegraph.com",
       default: true,
@@ -29,6 +39,16 @@ export const Meta = {
           fetch,
         }),
         cache: new InMemoryCache(),
+        defaultOptions: {
+          watchQuery: {
+            fetchPolicy: "no-cache",
+            errorPolicy: "ignore",
+          },
+          query: {
+            fetchPolicy: "no-cache",
+            errorPolicy: "all",
+          },
+        },
       }),
       apiEndpoint: "http://157.90.182.138:8000",
       default: false,

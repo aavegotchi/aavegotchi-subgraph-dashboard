@@ -17,17 +17,20 @@ export function OverviewTable() {
 
   const [subgraphStatuses, setSubgraphStatuses] = useState(null);
 
-  useEffect(() => {
-    async function updateSubgraphStatus() {
-      if (!subgraphStatuses) {
-        const data = await (await fetch("/api/subgraphs")).json();
-        console.log(data);
-        setSubgraphStatuses(data);
-      }
+  async function updateSubgraphStatus() {
+    if (!subgraphStatuses) {
+      const data = await (await fetch("/api/subgraphs")).json();
+      console.log(data);
+      setSubgraphStatuses(data);
     }
+  }
 
-    updateSubgraphStatus();
-  });
+  useEffect(() => {
+    setInterval(() => {
+      console.log("refresh");
+      updateSubgraphStatus();
+    }, 5000);
+  }, [subgraphStatuses]);
 
   if (!subgraphStatuses) {
     return <div>Loading...</div>;
