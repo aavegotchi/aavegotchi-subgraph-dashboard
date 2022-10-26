@@ -70,6 +70,7 @@ async function fetchAll() {
     Meta.nodes.map((e) =>
       fetchSubgraphStatusesOf(e.indexNode).then((subgraphs) => ({
         node: e.name,
+        apiEndpoint: e.apiEndpoint,
         subgraphs,
       }))
     )
@@ -90,7 +91,7 @@ async function fetchAll() {
               return null;
             }
 
-            return { name: e.node, ...results[0] };
+            return { name: e.node, ...results[0], apiEndpoint: e.apiEndpoint };
           })
           .filter((f) => f !== null),
       },
