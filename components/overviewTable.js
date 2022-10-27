@@ -24,7 +24,7 @@ export function OverviewTable() {
       method: "GET",
       headers: myHeaders,
     };
-    await fetch("http://localhost:3000/api/subgraphs", myInit)
+    await fetch("/api/subgraphs", myInit)
       .then((e) => e.json())
       .then((e) => {
         setSubgraphStatuses(e);
