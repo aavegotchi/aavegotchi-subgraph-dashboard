@@ -69,9 +69,11 @@ export function SubgraphCard({ subgraph }) {
               }
             </div>
 
-            <h2 className="mt-1 text-md font-semibold uppercase leading-tight truncate">
-              {subgraph.name.split("/")[1]}
-            </h2>
+            <a href={subgraph.github} target="_blank" rel="noreferrer">
+              <h2 className="mt-1 text-md font-semibold uppercase leading-tight truncate">
+                {subgraph.name.split("/")[1]}
+              </h2>
+            </a>
 
             <div className="mt-1">
               {subgraph.entities}

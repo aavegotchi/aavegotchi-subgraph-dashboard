@@ -47,56 +47,69 @@ export const Meta = {
     {
       name: "aavegotchi/aavegotchi-core-matic",
       projects: [PROJECT_AAVEGOTCHI, PROJECT_GOTCHIVERSE],
+      github: "https://github.com/aavegotchi/aavegotchi-matic-subgraph",
     },
     {
       name: "aavegotchi/gotchiverse-matic",
       projects: [PROJECT_AAVEGOTCHI, PROJECT_GOTCHIVERSE],
+      github: "https://github.com/aavegotchi/gotchiverse-subgraph",
     },
     {
       name: "aavegotchi/fake-gotchis-matic",
       projects: [PROJECT_AAVEGOTCHI, PROJECT_FAKEGOTCHI],
+      github: "https://github.com/aavegotchi/aavegotchi-fakegotchi-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-gltr-staking",
       projects: [],
+      github: "https://github.com/aavegotchi/aavegotchi-gltr-staking-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-baazaar-gbm",
       projects: [],
+      github: "https://github.com/aavegotchi/aavegotchi-baazaar-gbm-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-realm-matic",
       deprecated: true,
       projects: [PROJECT_GOTCHIVERSE],
+      github: "https://github.com/aavegotchi/aavegotchi-realm-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-svg",
       projects: [PROJECT_AAVEGOTCHI, PROJECT_GOTCHIVERSE],
+      github: "https://github.com/aavegotchi/aavegotchi-svg-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-portal-svgs",
       projects: [PROJECT_AAVEGOTCHI],
+      github: "https://github.com/aavegotchi/aavegotchi-portal-svg-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-gbm-v2",
       projects: [],
+      github: "https://github.com/aavegotchi/aavegotchi-baazaar-gbm-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-gbm-wearables",
       deprecated: true,
       projects: [],
+      github: "https://github.com/aavegotchi/aavegotchi-gbm-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-matic-raffle",
       projects: [PROJECT_AAVEGOTCHI],
+      github: "https://github.com/aavegotchi/aavegotchi-raffle-subgraph",
     },
     {
       name: "aavegotchi/aavegotchi-alchemica",
       projects: [],
+      github: "https://github.com/aavegotchi/aavegotchi-alchemica-subgraph",
     },
     {
       name: "aavegotchi/gotchi-vault",
       projects: [PROJECT_GOTCHI_VAULT],
+      github: "https://github.com/aavegotchi/aavegotchi-vault-subgraph",
     },
   ],
 };

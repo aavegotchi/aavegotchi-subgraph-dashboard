@@ -5,10 +5,6 @@ export const PROJECT_AAVEGOTCHI = {
     desc: "Main dapp for Aavegotchi",
     link: "https://app.aavegotchi.com",
   },
-  contact: {
-    discord: "Coder dan#1234",
-    mail: "",
-  },
 };
 
 export const PROJECT_GOTCHIVERSE = {
@@ -17,10 +13,6 @@ export const PROJECT_GOTCHIVERSE = {
     name: "Gotchiverse",
     desc: "Main dapp for Aavegotchi",
     link: "https://verse.aavegotchi.com",
-  },
-  contact: {
-    discord: "Coder dan#1234",
-    mail: "",
   },
 };
 
@@ -31,10 +23,6 @@ export const PROJECT_FAKEGOTCHI = {
     desc: "Main dapp for FAKE Gotchi NFTs",
     link: "https://www.fakegotchis.com",
   },
-  contact: {
-    discord: "Coder dan#1234",
-    mail: "",
-  },
 };
 
 export const PROJECT_GOTCHI_VAULT = {
@@ -43,9 +31,5 @@ export const PROJECT_GOTCHI_VAULT = {
     name: "Gotchi Vault",
     desc: "At the Gotchi Vault, your assets are managed securely, on-chain, by a multi-sig of veteran and trusted Aavegotchi community members. We have made hundreds of thousands of GHST managing our own collections, and are ready to bring our knowledge and experience to help you enter one of the most exciting metaverses in the Web3 space.",
     link: "https://www.gotchivault.com",
-  },
-  contact: {
-    discord: "Marczeller | Aave#3432",
-    mail: "",
   },
 };

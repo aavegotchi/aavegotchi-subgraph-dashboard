@@ -27,6 +27,7 @@ async function fetchAll() {
     Meta.subgraphs.map((e, i) => {
       return fetchCurrentHash(defaultNode.indexNode, e.name).then((r) => ({
         name: e.name,
+        github: e.github,
         current: r.current,
         pending: r.pending,
         projects: e.projects,
@@ -83,6 +84,7 @@ async function fetchAll() {
     return {
       name: s.name,
       projects: s.projects,
+      github: s.github,
       current: {
         hash: s.current,
         nodes: subgraphStatesOfNodes
