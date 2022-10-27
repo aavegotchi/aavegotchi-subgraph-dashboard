@@ -33,8 +33,8 @@ export function SubgraphCard({ subgraph }) {
   return (
     <div className="wrapperantialiased text-gray-900 ">
       <div>
-        <div className="relative px-4 mt-16 ">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="relative m-5">
+          <div className="bg-white p-5 rounded-lg shadow-lg">
             <div className="flex items-baseline">
               <a
                 href="#"
@@ -99,49 +99,53 @@ export function SubgraphCard({ subgraph }) {
                 <></>
               )}
             </div>
-            <div>
-              <span className="text-gray-600">Nodes</span>
-              <div className="float-right">
-                <span className="text-gray-600"> Lag</span>
+            {current.nodes.length > 0 && (
+              <div>
+                <span className="text-gray-600">Nodes</span>
+                <div className="float-right">
+                  <span className="text-gray-600"> Lag</span>
+                </div>
+                {current.nodes.map((n, i) => (
+                  <div className="text-right" key={i}>
+                    <div className="float-left">
+                      <a
+                        href={`${n.apiEndpoint}/subgraphs/id/${current.hash}`}
+                        target="_blank"
+                        className="text-teal-600 text-md font-semibold"
+                      >
+                        {n.name}
+                      </a>
+                    </div>
+                    <div>
+                      <span
+                        className={`text-sm pl-5 ${getColor(
+                          n.lagsBehind
+                        )} text-right`}
+                      >
+                        {formatNumber(n.lagsBehind, 0)}{" "}
+                        {n.lagsBehind == 1 ? "block" : "blocks"}
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
-              {current.nodes.map((n, i) => (
-                <div className="text-right" key={i}>
-                  <div className="float-left">
+            )}
+            {subgraph.projects && subgraph.projects.length > 0 && (
+              <div className="mt-4">
+                <span className="text-gray-600">Projects</span>
+                {subgraph.projects.map((n, i) => (
+                  <div className="" key={i}>
                     <a
-                      href={`${n.apiEndpoint}/subgraphs/id/${current.hash}`}
+                      href={`${n.meta.link}`}
                       target="_blank"
                       className="text-teal-600 text-md font-semibold"
                     >
-                      {n.name}
+                      {n.meta.name}
                     </a>
                   </div>
-                  <div>
-                    <span
-                      className={`text-sm pl-5 ${getColor(
-                        n.lagsBehind
-                      )} text-right`}
-                    >
-                      {formatNumber(n.lagsBehind, 0)}{" "}
-                      {n.lagsBehind == 1 ? "block" : "blocks"}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-4">
-              <span className="text-gray-600">Projects</span>
-              {subgraph.projects.map((n, i) => (
-                <div className="" key={i}>
-                  <a
-                    href={`${n.meta.link}`}
-                    target="_blank"
-                    className="text-teal-600 text-md font-semibold"
-                  >
-                    {n.meta.name}
-                  </a>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
