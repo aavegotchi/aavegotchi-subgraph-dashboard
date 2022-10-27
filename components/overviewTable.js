@@ -40,7 +40,7 @@ export function OverviewTable() {
           Loading...
         </h2>
         <p className="w-1/3 text-center text-white">
-          This may take a few seconds, please don't close this page.
+          This may take a few seconds, please don&apos;t close this page.
         </p>
       </div>
     );
