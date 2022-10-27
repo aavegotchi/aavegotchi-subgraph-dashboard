@@ -73,6 +73,7 @@ async function fetchAll() {
       fetchSubgraphStatusesOf(e.indexNode).then((subgraphs) => ({
         node: e.name,
         apiEndpoint: e.apiEndpoint,
+        entities: e.entityCount,
         subgraphs,
       }))
     )
@@ -94,7 +95,12 @@ async function fetchAll() {
               return null;
             }
 
-            return { name: e.node, ...results[0], apiEndpoint: e.apiEndpoint };
+            return {
+              name: e.node,
+              ...results[0],
+              apiEndpoint: e.apiEndpoint,
+              entities: e.entities,
+            };
           })
           .filter((f) => f !== null),
       },
@@ -110,7 +116,12 @@ async function fetchAll() {
               return null;
             }
 
-            return { name: e.node, ...results[0] };
+            return {
+              name: e.node,
+              ...results[0],
+              apiEndpoint: e.apiEndpoint,
+              entities: e.entities,
+            };
           })
           .filter((f) => f !== null),
       },
