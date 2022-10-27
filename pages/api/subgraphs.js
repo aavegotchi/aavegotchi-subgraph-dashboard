@@ -131,8 +131,8 @@ async function fetchAll() {
   return formattedSubgraphs;
 }
 
-export default async (req, res) => {
+export default async function main(req, res) {
   const result = await fetchAll();
 
   res.status(200).json(result);
-};
+}

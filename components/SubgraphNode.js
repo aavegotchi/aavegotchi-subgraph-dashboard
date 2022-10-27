@@ -29,6 +29,7 @@ export function SubgraphNode({ nodeData }) {
               nodeData.apiEndpoint + "/subgraphs/id/" + nodeData.subgraphHash
             }
             target="_blank"
+            rel="noreferrer"
           >
             <Button className="text-black bg-white pt-0 mt-0" variant="text">
               {nodeData.name}

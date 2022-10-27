@@ -10,7 +10,7 @@ export function SubgraphCard({ subgraph }) {
     if (!current) {
       setCurrent(subgraph.current);
     }
-  }, [subgraph]);
+  }, [subgraph, current]);
 
   useEffect(() => {
     if (showPending) {
@@ -18,7 +18,7 @@ export function SubgraphCard({ subgraph }) {
     } else {
       setCurrent(subgraph.current);
     }
-  }, [showPending]);
+  }, [showPending, subgraph]);
 
   const getColor = (lagsBehind) => {
     if (lagsBehind < 5) {
@@ -81,6 +81,7 @@ export function SubgraphCard({ subgraph }) {
                   <a
                     href={`https://ipfs.io/ipfs/${current.hash}`}
                     target="_blank"
+                    rel="noreferrer"
                     className="text-teal-600 text-sm"
                   >
                     {formatHash(current.hash)}
@@ -107,6 +108,7 @@ export function SubgraphCard({ subgraph }) {
                       <a
                         href={`${n.apiEndpoint}/subgraphs/id/${current.hash}`}
                         target="_blank"
+                        rel="noreferrer"
                         className="text-teal-600 text-md font-semibold"
                       >
                         {n.name}
@@ -134,6 +136,7 @@ export function SubgraphCard({ subgraph }) {
                     <a
                       href={`${n.meta.link}`}
                       target="_blank"
+                      rel="noreferrer"
                       className="text-teal-600 text-md font-semibold"
                     >
                       {n.meta.name}
