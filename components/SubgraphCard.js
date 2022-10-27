@@ -54,15 +54,17 @@ export function SubgraphCard({ subgraph }) {
                     showPending && `bg-red-200 animate-pulse `
                   } text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide `}
                 >
-                  <a
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setShowPending(true);
-                    }}
-                  >
-                    Pending
-                  </a>
+                  {subgraph.pending.name && (
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShowPending(true);
+                      }}
+                    >
+                      Pending
+                    </a>
+                  )}
                 </div>
               }
             </div>
@@ -92,15 +94,9 @@ export function SubgraphCard({ subgraph }) {
                 </div>
               )}
             </div>
-            <div className="mt-4">
-              {!current.nodes ? (
-                <span className="text-gray-600">Nowhere deployed?</span>
-              ) : (
-                <></>
-              )}
-            </div>
+
             {current.nodes.length > 0 && (
-              <div>
+              <div className="mt-3">
                 <span className="text-gray-600">Nodes</span>
                 <div className="float-right">
                   <span className="text-gray-600"> Lag</span>
@@ -131,7 +127,7 @@ export function SubgraphCard({ subgraph }) {
               </div>
             )}
             {subgraph.projects && subgraph.projects.length > 0 && (
-              <div className="mt-4">
+              <div className="mt-3">
                 <span className="text-gray-600">Projects</span>
                 {subgraph.projects.map((n, i) => (
                   <div className="" key={i}>
