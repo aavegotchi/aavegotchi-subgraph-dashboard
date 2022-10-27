@@ -31,10 +31,10 @@ export function SubgraphCard({ subgraph }) {
   };
 
   return (
-    <div className="wrapperantialiased text-gray-900 ">
-      <div>
-        <div className="relative m-5">
-          <div className="bg-white p-5 rounded-lg shadow-lg">
+    <div className="wrapperantialiased text-gray-900 mb-10">
+      <div className="h-full">
+        <div className="relative m-5 h-full">
+          <div className="bg-white p-5 rounded-lg shadow-lg h-full">
             <div className="flex items-baseline">
               <a
                 href="#"
@@ -76,8 +76,8 @@ export function SubgraphCard({ subgraph }) {
             <div className="mt-1">
               {subgraph.entities}
               {current.hash && (
-                <span className="text-gray-600 text-sm">
-                  Hash:{" "}
+                <span className="text-gray-600 text-sm ">
+                  <span className="font-semibold">Hash:</span>{" "}
                   <a
                     href={`https://ipfs.io/ipfs/${current.hash}`}
                     target="_blank"
@@ -89,8 +89,8 @@ export function SubgraphCard({ subgraph }) {
                 </span>
               )}
               {current.nodes.length > 0 && current.nodes[0].entityCount && (
-                <div className="text-gray-600 text-sm">
-                  Entities:{" "}
+                <div className="text-gray-600 text-sm ">
+                  <span className="font-semibold">Entities:</span>{" "}
                   {formatNumber(parseInt(current.nodes[0].entityCount), 0)}
                 </div>
               )}
@@ -98,9 +98,9 @@ export function SubgraphCard({ subgraph }) {
 
             {current.nodes.length > 0 && (
               <div className="mt-3">
-                <span className="text-gray-600">Nodes</span>
+                <span className="text-gray-600 font-semibold">Nodes</span>
                 <div className="float-right">
-                  <span className="text-gray-600"> Lag</span>
+                  <span className="text-gray-600 font-semibold"> Lag</span>
                 </div>
                 {current.nodes.map((n, i) => (
                   <div className="text-right" key={i}>
@@ -130,7 +130,7 @@ export function SubgraphCard({ subgraph }) {
             )}
             {subgraph.projects && subgraph.projects.length > 0 && (
               <div className="mt-3">
-                <span className="text-gray-600">Projects</span>
+                <span className="text-gray-600 font-semibold">Projects</span>
                 {subgraph.projects.map((n, i) => (
                   <div className="" key={i}>
                     <a

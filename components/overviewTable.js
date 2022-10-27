@@ -33,18 +33,23 @@ export function OverviewTable() {
   }
 
   if (!subgraphStatuses || subgraphStatuses.length == 0) {
-    return <div>Loading...</div>;
+    return (
+      <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+        <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+        <h2 className="text-center text-white text-xl font-semibold">
+          Loading...
+        </h2>
+        <p className="w-1/3 text-center text-white">
+          This may take a few seconds, please don't close this page.
+        </p>
+      </div>
+    );
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-8">
+    <div className="container mx-auto px-4 sm:px-8 flex items-stretch">
       <div className="py-8">
-        <div>
-          <h1 className="text-2xl font-semibold leading-tight text-center">
-            Subgraphs of Aavegotchi
-          </h1>
-        </div>
-        <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {subgraphStatuses.map((e, i) => (
             <SubgraphCard subgraph={e} key={i} />
           ))}
