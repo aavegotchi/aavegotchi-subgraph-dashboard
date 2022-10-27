@@ -47,8 +47,19 @@ export function OverviewTable() {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-8 flex items-stretch">
-      <div className="py-8">
+    <div>
+      <div className="container mx-auto">
+        <a
+          href="https://github.com/aavegotchi/aavegotchi-subgraph-dashboard/fork"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <h2 className="text-right pr-5 text-fuchsia-500 text-4xl">
+            Add your project!!!
+          </h2>
+        </a>
+      </div>
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {subgraphStatuses.map((e, i) => (
             <SubgraphCard subgraph={e} key={i} />
