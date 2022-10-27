@@ -20,6 +20,16 @@ export function SubgraphCard({ subgraph }) {
     }
   }, [showPending]);
 
+  const getColor = (lagsBehind) => {
+    if (lagsBehind < 5) {
+      return "text-teal-600";
+    } else if (lagsBehind < 20) {
+      return "text-yellow-600";
+    }
+
+    return "text-red-600";
+  };
+
   return (
     <div className="wrapperantialiased text-gray-900 ">
       <div>
@@ -91,6 +101,9 @@ export function SubgraphCard({ subgraph }) {
             </div>
             <div>
               <span className="text-gray-600">Nodes</span>
+              <div className="float-right">
+                <span className="text-gray-600"> Lag</span>
+              </div>
               {current.nodes.map((n, i) => (
                 <div className="text-right" key={i}>
                   <div className="float-left">
@@ -103,8 +116,13 @@ export function SubgraphCard({ subgraph }) {
                     </a>
                   </div>
                   <div>
-                    <span className="text-sm pl-5 text-gray-600 text-right">
-                      {formatNumber(n.lagsBehind, 0)} block(s) behind
+                    <span
+                      className={`text-sm pl-5 ${getColor(
+                        n.lagsBehind
+                      )} text-right`}
+                    >
+                      {formatNumber(n.lagsBehind, 0)}{" "}
+                      {n.lagsBehind == 1 ? "block" : "blocks"}
                     </span>
                   </div>
                 </div>
