@@ -7,13 +7,7 @@ export function SubgraphCard({ subgraph }) {
   return (
     <div className="wrapperantialiased text-gray-900 ">
       <div>
-        <img
-          src="https://source.unsplash.com/random/350x350"
-          alt=" random imgee"
-          className="w-full p-10 object-cover object-center rounded-lg shadow-md"
-        />
-
-        <div className="relative px-4 -mt-16  ">
+        <div className="relative px-4 mt-16 ">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <div className="flex items-baseline">
               <span className="bg-teal-200 text-teal-800 text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide">
