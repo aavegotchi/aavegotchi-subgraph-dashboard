@@ -67,9 +67,9 @@ export function SubgraphCard({ subgraph }) {
               }
             </div>
 
-            <h4 className="mt-1 text-xl font-semibold uppercase leading-tight truncate">
+            <h2 className="mt-1 text-md font-semibold uppercase leading-tight truncate">
               {subgraph.name.split("/")[1]}
-            </h4>
+            </h2>
 
             <div className="mt-1">
               {subgraph.entities}

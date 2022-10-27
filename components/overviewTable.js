@@ -40,9 +40,9 @@ export function OverviewTable() {
     <div className="container mx-auto px-4 sm:px-8">
       <div className="py-8">
         <div>
-          <h2 className="text-2xl font-semibold leading-tight">
-            Subgraphs & Nodes
-          </h2>
+          <h1 className="text-2xl font-semibold leading-tight text-center">
+            Subgraphs of Aavegotchi
+          </h1>
         </div>
         <div className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
           {subgraphStatuses.map((e, i) => (
