@@ -54,7 +54,7 @@ export function SubgraphCard({ subgraph }) {
                     showPending && `bg-red-200 animate-pulse `
                   } text-xs px-2 inline-block rounded-full  uppercase font-semibold tracking-wide `}
                 >
-                  {subgraph.pending.name && (
+                  {subgraph.pending?.hash && (
                     <a
                       href="#"
                       onClick={(e) => {
